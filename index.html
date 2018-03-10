@@ -37,15 +37,18 @@
 
 
   <div id="panorama"></div>
+  <p id="pitch"></p>
+  <p id="yaw"></p>
+  <p id="huhu"></p>
 
   <script>
-  pannellum.viewer('panorama', {
+  var viewer = pannellum.viewer('panorama', {
     "default": {
         "firstScene": "playground",
         "author": "Ahmad Irfan Maulana",
         "sceneFadeDuration": 1000,
         "autoLoad": true,
-        "autoRotate": -1,
+        "autoRotate": -1
 
     },
 
@@ -56,12 +59,12 @@
             "panorama": "1.jpg",
             "hotSpots": [
               {
-                  "pitch": -25,
-                  "yaw": 10,
+                  "pitch": -23.10694756928593,
+                  "yaw": -3.0135584893079193,
                   "type": "scene",
                   "text": "To Outside",
-                  "cssClass" : "scene",
                   "sceneId": "outside",
+                  "cssClass" : "scene"
               },
               {
                   "pitch": -6,
@@ -70,6 +73,18 @@
                   "text": "To Inside",
                   "cssClass" : "scene",
                   "sceneId": "inside",
+              },
+              {
+                  "pitch": -8.906129031305198,
+                  "yaw": -147.18513461819114,
+                  "type": "info",
+                  "text": "Alif Cat",
+              },
+              {
+                  "pitch": 1.4273109900679368,
+                  "yaw": 131.34607576601124,
+                  "type": "info",
+                  "text": "People House",
               }
             ]
         },
@@ -108,10 +123,31 @@
                   "text": "To Outside",
                   "cssClass" : "scene",
                   "sceneId": "outside",
+              },
+              {
+                  "pitch": -36.861168554653965,
+                  "yaw": 125.89371537341013,
+                  "type": "info",
+                  "text": "Alif Shoes"
               }
             ]
         }
       }
+  });
+
+  // var panorama = document.getElementById('panorama');
+  // panorama.on('click',function (event) {
+  //   alert("hai");
+  // })
+
+  viewer.on('mousedown', function(event) {
+      pitchAndYaw = viewer.mouseEventToCoords(event);
+      pitch = pitchAndYaw[0];
+      yaw = pitchAndYaw[1];
+
+      document.getElementById('pitch').innerHTML = "Pitch : " + pitch;
+      document.getElementById('yaw').innerHTML = "Yaw : " + yaw;
+      document.getElementById('huhu').innerHTML = "Huhu : " + pitchAndYaw;
   });
   </script>
 </body>
