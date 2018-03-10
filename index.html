@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>alif house</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="pannellium.min.css">
+    <script src="pannellium.min.js" charset="utf-8"></script>
+
+    <style media="screen">
+      #panorama{
+        width: 800px;
+        height: 600px;
+        border: 1px solid red;
+      }
+      .scene{
+        width: 35px;
+        height: 35px;
+        border: 2px solid #fff;
+        background: rgba(122, 121, 128, 0.48);
+        /* animation: scene 3s;
+        animation-iteration-count: infinite; */
+      }
+
+      @keyframes scene {
+        from{
+          width: 35px;
+          height: 35px;
+        }
+        to{
+          width: 50px;
+          height: 50px;
+        }
+      }
+    </style>
+</head>
+<body>
+
+
+  <div id="panorama"></div>
+
+  <script>
+  pannellum.viewer('panorama', {
+    "default": {
+        "firstScene": "playground",
+        "author": "Ahmad Irfan Maulana",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "autoRotate": -1,
+
+    },
+
+    "scenes": {
+        "playground": {
+            "title": "Alif House - Playground",
+            "type": "equirectangular",
+            "panorama": "1.jpg",
+            "hotSpots": [
+              {
+                  "pitch": -25,
+                  "yaw": 10,
+                  "type": "scene",
+                  "text": "To Outside",
+                  "cssClass" : "scene",
+                  "sceneId": "outside",
+              },
+              {
+                  "pitch": -6,
+                  "yaw": 14,
+                  "type": "scene",
+                  "text": "To Inside",
+                  "cssClass" : "scene",
+                  "sceneId": "inside",
+              }
+            ]
+        },
+        "outside": {
+            "title": "Alif House - Outside",
+            "type": "equirectangular",
+            "panorama": "2.jpg",
+            "hotSpots": [
+              {
+                  "pitch": 0,
+                  "yaw": 33,
+                  "type": "scene",
+                  "text": "To Inside",
+                  "cssClass" : "scene",
+                  "sceneId": "inside",
+              },
+              {
+                  "pitch": 0,
+                  "yaw": 176,
+                  "type": "scene",
+                  "text": "To Playground",
+                  "cssClass" : "scene",
+                  "sceneId": "playground",
+              }
+            ]
+        },
+        "inside": {
+            "title": "Alif House - Inside",
+            "type": "equirectangular",
+            "panorama": "3.jpg",
+            "hotSpots": [
+              {
+                  "pitch": 0,
+                  "yaw": 195,
+                  "type": "scene",
+                  "text": "To Outside",
+                  "cssClass" : "scene",
+                  "sceneId": "outside",
+              }
+            ]
+        }
+      }
+  });
+  </script>
+</body>
+</html>
